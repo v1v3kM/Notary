@@ -44,6 +44,7 @@ next-env.d.ts
 # Development and documentation files
 *.md
 !README.md
+!DEPLOYMENT.md
 analyze-pdf.js
 analyze_pdf.py
 *-schema.sql

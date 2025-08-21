@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "description": "Modern digital agreement automation platform with enhanced UI/UX",
     "private": false,
-    "homepage": "https://digital-notary-platform.vercel.app",
+    "homepage": "https://notary-v1v3km.vercel.app",
     "repository": {
         "type": "git",
-        "url": "https://github.com/YOUR_USERNAME/digital-notary-platform.git"
+        "url": "https://github.com/v1v3kM/Notary.git"
     },
     "keywords": [
         "notary",

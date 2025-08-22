@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { FileText, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -11,7 +12,13 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <FileText className="w-8 h-8 text-blue-400" />
+              <Image 
+                src="/logo.png" 
+                alt="Notary Platform Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
               <span className="text-xl font-bold">NotaryPlatform</span>
             </div>
             <p className="text-gray-400">

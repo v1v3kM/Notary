@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Setup Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+        
+        .link {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 Supabase Setup Assistant</h1>
+
+        <div class="step">
+            <h3>Step 1: Check Current Status</h3>
+            <button onclick="checkStatus()">Check Database Status</button>
+            <div id="statusResult"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Database Setup</h3>
+            <p>1. Open <a href="https://supabase.com/dashboard/projects/cjfvdwmykwsvpkocqyev/sql/new" target="_blank" class="link">Supabase SQL Editor</a></p>
+            <p>2. Copy the SQL from your <code>database_setup.sql</code> file</p>
+            <p>3. Paste and click <strong>Run</strong></p>
+            <p>4. Verify tables appear in <a href="https://supabase.com/dashboard/projects/cjfvdwmykwsvpkocqyev/editor" target="_blank" class="link">Table Editor</a></p>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Storage Setup</h3>
+            <p>1. Open <a href="https://supabase.com/dashboard/projects/cjfvdwmykwsvpkocqyev/storage/buckets" target="_blank" class="link">Supabase Storage</a></p>
+            <p>2. Click <strong>Create Bucket</strong></p>
+            <p>3. Name: <code>documents</code></p>
+            <p>4. Set as <strong>Public</strong> ✅</p>
+            <p>5. Click <strong>Create</strong></p>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Test Complete Setup</h3>
+            <button onclick="testSignup()">Test Signup Flow</button>
+            <button onclick="testLogin()">Test Login Flow</button>
+            <div id="testResults"></div>
+        </div>
+
+        <div class="step">
+            <h3>Quick Links</h3>
+            <p>
+                <a href="http://localhost:3000/auth/signup" target="_blank" class="link">→ Signup Page</a> |
+                <a href="http://localhost:3000/auth/login" target="_blank" class="link">→ Login Page</a> |
+                <a href="http://localhost:3000/api/test-db" target="_blank" class="link">→ Database Status</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        async function checkStatus() {
+            const resultDiv = document.getElementById('statusResult');
+            resultDiv.innerHTML = '<div class="info">Checking status...</div>';
+
+            try {
+                const response = await fetch('/api/test-db');
+                const data = await response.json();
+
+                let html = '<h4>Database Status:</h4>';
+
+                if (data.setupComplete) {
+                    html += '<div class="success">✅ Complete setup detected!</div>';
+                } else {
+                    html += '<div class="warning">⚠️ Setup incomplete</div>';
+                }
+
+                html += '<pre>' + JSON.stringify(data.diagnostics, null, 2) + '</pre>';
+
+                if (data.diagnostics.recommendations.length > 0) {
+                    html += '<h4>Recommendations:</h4>';
+                    data.diagnostics.recommendations.forEach(rec => {
+                        const className = rec.priority === 'HIGH' ? 'error' : 'warning';
+                        html += `<div class="${className}"><strong>${rec.issue}:</strong> ${rec.solution}</div>`;
+                    });
+                }
+
+                resultDiv.innerHTML = html;
+            } catch (error) {
+                resultDiv.innerHTML = '<div class="error">Error checking status: ' + error.message + '</div>';
+            }
+        }
+
+        function testSignup() {
+            window.open('http://localhost:3000/auth/signup', '_blank');
+            document.getElementById('testResults').innerHTML = '<div class="info">Signup page opened in new tab. Complete the registration and check for any errors.</div>';
+        }
+
+        function testLogin() {
+            window.open('http://localhost:3000/auth/login', '_blank');
+            document.getElementById('testResults').innerHTML = '<div class="info">Login page opened in new tab. Try signing in with your test account.</div>';
+        }
+
+        // Auto-check status on page load
+        window.addEventListener('load', checkStatus);
+    </script>
+</body>
+
+</html>

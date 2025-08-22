@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { demoUsers } from '@/lib/demo-data'
+import { demoUsers } from '@/lib/demo/demo-data'
 
 export async function POST() {
   try {

@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextRequest, NextResponse } from 'next/server'
-import { isDemoUser, getDemoUser } from '@/lib/demo-data'
+import { isDemoUser, getDemoUser } from '@/lib/demo/demo-data'
 
 export async function POST(request: NextRequest) {
   let email: string;

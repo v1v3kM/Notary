@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Lock, Eye, EyeOff, CheckCircle, AlertCircle, ArrowLeft, Loader } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
+import { supabase } from '@/lib/database/supabase'
 
 function ResetPasswordContent() {
   const router = useRouter()

@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, AlertCircle, Loader, Mail, LogIn } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
+import { supabase } from '@/lib/database/supabase'
 
 function AuthCallbackContent() {
   const router = useRouter()

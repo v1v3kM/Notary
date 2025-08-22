@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/lib/database/supabase';
 
 // Demo availability data
 const getDemoAvailabilitySlots = (lawyerId: string, date: string) => {

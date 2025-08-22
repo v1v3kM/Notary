@@ -1,13 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "notary-frontend/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [],
-  "framework": {
-    "name": "nextjs"
-  }
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next"
 }

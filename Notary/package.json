@@ -1,0 +1,17 @@
+{
+  "name": "notary-setup-scripts",
+  "version": "1.0.0",
+  "description": "Setup scripts for Notary platform",
+  "main": "index.js",
+  "scripts": {
+    "setup": "node one-click-setup.js",
+    "setup-interactive": "node interactive-setup.js",
+    "setup-cli": "node setup-supabase.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.55.0"
+  },
+  "keywords": ["supabase", "setup", "database"],
+  "author": "Notary Platform",
+  "license": "MIT"
+}

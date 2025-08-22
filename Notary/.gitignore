@@ -1,0 +1,26 @@
+## Node
+node_modules/
+notary-frontend/node_modules/
+
+## Environment
+.env
+.env.local
+notary-frontend/.env.local
+
+## Generated SQL / setup artifacts
+auto-generated-setup.sql
+COMPLETE_FIX_SETUP.sql
+COMPLETE_DATABASE_SETUP.sql
+ready-to-run-setup.sql
+
+## Large binaries / docs
+*.dmg
+*.pdf
+
+## OS files
+.DS_Store
+
+## Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -2,6 +2,14 @@ const crypto = require('crypto');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    eslint: {
+        // Only fail on errors during build, not warnings
+        ignoreDuringBuilds: false,
+    },
+    typescript: {
+        // Dangerously allow production builds to complete even if there are type errors
+        ignoreBuildErrors: false,
+    },
     serverExternalPackages: ['@supabase/supabase-js'],
     env: {
         CUSTOM_KEY: process.env.CUSTOM_KEY,

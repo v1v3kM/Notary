@@ -180,8 +180,8 @@ export default function ManualConfirm() {
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <h3 className="font-semibold text-blue-800 mb-2">How to Use:</h3>
               <ul className="text-blue-700 text-sm space-y-1">
-                <li><strong>Confirm Existing User:</strong> For users who signed up but didn't get verification email</li>
-                <li><strong>Create Confirmed User:</strong> Creates a new user that's already verified</li>
+                <li><strong>Confirm Existing User:</strong> For users who signed up but didn&apos;t get verification email</li>
+                <li><strong>Create Confirmed User:</strong> Creates a new user that&apos;s already verified</li>
                 <li><strong>Send Password Reset:</strong> Sends password reset email (might work better than signup emails)</li>
               </ul>
             </div>
@@ -191,8 +191,8 @@ export default function ManualConfirm() {
               <h3 className="font-semibold text-yellow-800 mb-2">⚡ Quick Solutions:</h3>
               <ol className="text-yellow-700 text-sm space-y-1">
                 <li>1. <strong>Best Fix:</strong> Disable email confirmation in Supabase Dashboard</li>
-                <li>2. <strong>For existing users:</strong> Use "Confirm Existing User" button above</li>
-                <li>3. <strong>For new users:</strong> Use "Create Confirmed User" button above</li>
+                <li>2. <strong>For existing users:</strong> Use &quot;Confirm Existing User&quot; button above</li>
+                <li>3. <strong>For new users:</strong> Use &quot;Create Confirmed User&quot; button above</li>
                 <li>4. <strong>Alternative:</strong> Use password reset (sometimes works better)</li>
               </ol>
             </div>

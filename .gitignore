@@ -63,3 +63,16 @@ test-signup.sh
 page.backup.tsx
 page.current.tsx
 page_clean.tsx
+
+# System files
+.DS_Store
+*/.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# IDE files
+.vscode/
+.idea/

@@ -1,0 +1,9 @@
+{
+  "name": "notary-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "bash start-notary-dev.sh",
+    "setup-db": "node backend/auto-setup.js"
+  }
+}

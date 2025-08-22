@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create Supabase client
-    const supabase = createServerSupabaseClient()
+    const supabase = await createServerSupabaseClient()
 
     try {
       // Use Supabase's built-in email verification

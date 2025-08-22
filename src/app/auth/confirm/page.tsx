@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { motion } from 'framer-motion';
@@ -16,7 +16,7 @@ import {
   User
 } from 'lucide-react';
 
-export default function EmailConfirmationPage() {
+function EmailConfirmationContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'error' | 'expired'>('loading');
@@ -269,5 +269,20 @@ export default function EmailConfirmationPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function EmailConfirmationPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center">
+        <div className="text-center">
+          <RefreshCw className="w-8 h-8 text-blue-600 animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <EmailConfirmationContent />
+    </Suspense>
   );
 }
